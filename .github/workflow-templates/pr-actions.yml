@@ -23,7 +23,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      - uses: Khan/jest-coverage-action@master
+      - uses: Khan/jest-coverage-action@WEB-2272
         setup: yarn
         with:
           jest-bin: ./node_modules/.bin/jest
