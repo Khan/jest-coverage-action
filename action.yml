@@ -1,12 +1,12 @@
-name: 'Eslint Action'
-description: 'Run eslint and report the results inline'
+name: 'Jest Coverage Action'
+description: 'Run jest coverage'
 runs:
   using: 'node12'
   main: 'dist/index.js'
 inputs:
-  eslint-lib:
+  jest-bin:
     required: true
-    description: 'Path to your eslint library, probably node_modules/eslint'
+    description: 'Path to your jest library, probably node_modules/.bin/jest'
 branding:
   icon: check-circle
   color: red
