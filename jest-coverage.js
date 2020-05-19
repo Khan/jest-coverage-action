@@ -12,7 +12,7 @@ const sendReport = require('actions-utils/send-report');
 const coveragePragma = '\n// @coverage-lint';
 
 /*::
-import type {Message} from '../lib/send-report';
+import type {Message} from 'actions-utils/send-report';
 */
 
 const getIgnoredRanges = (path, contents) => {
