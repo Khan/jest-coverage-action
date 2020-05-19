@@ -1,8 +1,8 @@
 {
-    "name": "eslint-action",
+    "name": "jest-coverage-action",
     "version": "1.0.0",
     "main": "index.js",
-    "repository": "git@github.com:Khan/eslint-action.git",
+    "repository": "git@github.com:Khan/jest-coverage-action.git",
     "author": "Jared Forsyth <jared@jaredforsyth.com>",
     "license": "MIT",
     "scripts": {
@@ -10,7 +10,7 @@
         "format-files": "prettier-eslint --write --config .prettierrc",
         "lint": "../../react-native/node_modules/.bin/eslint .",
         "test": "jest",
-        "dist": "ncc build eslint.js"
+        "dist": "ncc build jest-coverage.js"
     },
     "devDependencies": {
         "@actions/github": "^2.1.1",
