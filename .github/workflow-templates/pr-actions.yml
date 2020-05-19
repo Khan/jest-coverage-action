@@ -15,17 +15,41 @@ jobs:
           eslint-lib: ./node_modules/eslint
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
       - uses: Khan/jest-action@master
         setup: yarn
         with: 
           jest-bin: ./node_modules/.bin/jest
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - uses: Khan/jest-coverage-action@WEB-2272
+        setup: yarn
+        with:
+          jest-bin: ./node_modules/.bin/jest
+          coverage-data-path: coverage/coverage-final.json
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+
+#      - name: react-native / jest coverage
+#        setup: [actions-deps, rn_yarn]
+#        paths: react-native/**/*.js
+#        local_env_flag: SLOW_LINT
+#        working-directory: react-native
+#        run: |
+#          yarn jest --silent --coverage || true
+#          node ../.github/actions/steps/jest-coverage.js coverage/coverage-final.json
+#        env:
+#          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+
       - uses: Khan/flow-coverage-action@9cc8679c3d58cb9cd7c4669c041b2db1919b9509
         setup: yarn
         with:
           flow-bin: ./node_modules/.bin/flow
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
       - run: yarn flow --color always --quiet
         setup: yarn
