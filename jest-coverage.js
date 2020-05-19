@@ -103,10 +103,7 @@ const lintProject = coverageData => {
         });
         /* end flow-uncovered-block */
 
-        const {ranges: ignoredRanges, errors} = getIgnoredRanges(
-            file,
-            contents,
-        );
+        const {ranges: ignoredRanges, errors} = getIgnoredRanges(file, contents);
         messages.push(...errors);
 
         const ignoredLines = {};
