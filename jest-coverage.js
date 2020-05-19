@@ -163,7 +163,7 @@ const lintProject = coverageData => {
     return messages;
 };
 
-const run = async => {
+async function run() {
     const jestBin = process.env['INPUT_JEST-BIN'];
     if (!jestBin) {
         console.error(
@@ -186,7 +186,7 @@ const run = async => {
     const coverageData = require(path.resolve(coverageDataPath)); // flow-uncovered-line
     const messages = lintProject(coverageData); // flow-uncovered-line
     await sendReport('Jest Coverage', messages);
-};
+}
 
 // flow-next-uncovered-line
 run().catch(err => {
