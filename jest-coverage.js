@@ -177,7 +177,7 @@ async function run() {
         process.exit(1);
         return;
     }
-    const {stdout} = await execProm(`${jestBin}  --silent --coverage`);
+    await execProm(`${jestBin}  --silent --coverage`);
 
     // $FlowFixMe: its ok folks
     const coverageData = require(path.resolve(coverageDataPath)); // flow-uncovered-line
