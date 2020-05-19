@@ -6,6 +6,7 @@ require('@babel/register'); // flow-uncovered-line
 
 const path = require('path');
 const fs = require('fs');
+const execProm = require('actions-utils/exec-prom');
 const sendReport = require('actions-utils/send-report');
 
 const coveragePragma = '\n// @coverage-lint';
@@ -162,16 +163,33 @@ const lintProject = coverageData => {
     return messages;
 };
 
-const run = async coverageDataPath => {
+const run = async => {
+    const jestBin = process.env['INPUT_JEST-BIN'];
+    if (!jestBin) {
+        console.error(
+            `You need to have jest installed, and pass in the the jest binary via the variable 'jest-bin'.`,
+        );
+        process.exit(1);
+        return;
+    }
+    const coverageDataPath = process.env['INPUT_COVERAGE-DATA-PATH'];
+    if (!coverageDataPath) {
+        console.error(
+            `You need to pass in the the coverage data path via the variable 'coverage-data-path'.`,
+        );
+        process.exit(1);
+        return;
+    }
+    const {stdout} = await execProm(`${jestBin}  --silent --coverage`);
+
     // $FlowFixMe: its ok folks
     const coverageData = require(path.resolve(coverageDataPath)); // flow-uncovered-line
     const messages = lintProject(coverageData); // flow-uncovered-line
     await sendReport('Jest Coverage', messages);
 };
 
-const [_, __, coverageDataPath] = process.argv;
 // flow-next-uncovered-line
-run(coverageDataPath).catch(err => {
+run().catch(err => {
     console.error(err); // flow-uncovered-line
     process.exit(1);
 });

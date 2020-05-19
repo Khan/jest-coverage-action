@@ -23,14 +23,15 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-#      - uses: Khan/jest-coverage-action@master
-#        setup: yarn
-#        with:
-#          jest-bin: ./node_modules/.bin/jest
-#        env:
-#          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-#
-#
+      - uses: Khan/jest-coverage-action@master
+        setup: yarn
+        with:
+          jest-bin: ./node_modules/.bin/jest
+          coverage-data-path: coverage/coverage-final.json
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+
 #      - name: react-native / jest coverage
 #        setup: [actions-deps, rn_yarn]
 #        paths: react-native/**/*.js
