@@ -6,7 +6,10 @@ runs:
 inputs:
   jest-bin:
     required: true
-    description: 'Path to your jest library, probably node_modules/.bin/jest'
+    description: 'Path to your jest library, probably ./node_modules/.bin/jest'
+  coverage-data-path:
+    required: true
+    description: 'Path to your coverage file, probably ./coverage/coverage-final.json'
 branding:
   icon: check-circle
   color: red
