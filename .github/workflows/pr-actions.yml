@@ -24,7 +24,7 @@ jobs:
       - uses: Khan/jest-coverage-action@master
         with:
           jest-bin: ./node_modules/.bin/jest
-          coverage-data-path: coverage/coverage-final.json
+          coverage-data-path: ./coverage/coverage-final.json
         env:
           GITHUB_TOKEN: '${{ secrets.GITHUB_TOKEN }}'
       - uses: Khan/flow-coverage-action@master
