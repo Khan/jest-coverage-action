@@ -59,12 +59,10 @@ const lintProject = coverageData => {
     // const coverageData = require(`${__dirname}/../../coverage/coverage-final.json`);
 
     const messages = [];
-    console.log("AAAAAAAAAAAAAAAAA");
 
     // flow-next-uncovered-line
     for (const file of Object.keys(coverageData)) {
         if (!fs.existsSync(file)) {
-            console.log("aaaaaaaaaaaaaaaaa");
             continue;
         }
         const contents = fs.readFileSync(file, 'utf8');
@@ -189,7 +187,6 @@ async function run() {
 
     // $FlowFixMe: its ok folks
     const coverageData = require(path.resolve(coverageDataPath)); // flow-uncovered-line
-    console.log(`coverageData ${coverageData}`);
     const messages = lintProject(coverageData); // flow-uncovered-line
     await sendReport('Jest Coverage', messages);
 }
