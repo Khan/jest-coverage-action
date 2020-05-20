@@ -28,10 +28,7 @@ const getIgnoredRanges = (path, contents) => {
             if (blockStart == null) {
                 errors.push({
                     path,
-                    message: 'Unmatched end jest-uncovered-block',
-                    start: {line: i, column: 0},
-                    end: {line: i, column: 0},
-                    annotationLevel: 'failure',
+                    message: 'Unmatched end jest-uncovered-block', start: {line: i, column: 0}, end: {line: i, column: 0}, annotationLevel: 'failure',
                 });
             } else {
                 ranges.push([blockStart, i]);
