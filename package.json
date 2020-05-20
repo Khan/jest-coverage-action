@@ -1,8 +1,8 @@
 {
-    "name": "eslint-action",
+    "name": "jest-coverage-action",
     "version": "1.0.0",
     "main": "index.js",
-    "repository": "git@github.com:Khan/eslint-action.git",
+    "repository": "git@github.com:Khan/jest-coverage-action.git",
     "author": "Jared Forsyth <jared@jaredforsyth.com>",
     "license": "MIT",
     "scripts": {
@@ -10,15 +10,15 @@
         "format-files": "prettier-eslint --write --config .prettierrc",
         "lint": "../../react-native/node_modules/.bin/eslint .",
         "test": "jest",
-        "dist": "ncc build eslint.js"
+        "dist": "ncc build jest-coverage.js"
     },
     "devDependencies": {
         "@actions/github": "^2.1.1",
         "@babel/core": "^7.9.6",
         "@babel/register": "^7.9.0",
         "@zeit/ncc": "^0.22.1",
-        "actions-utils": "Khan/actions-utils#5b0e4a790fd2a7efb414163c63d4e5eb1d99f0f8",
-        "actions-workflow-tools": "Khan/actions-workflow-tools#b3a15ac947ddfeb8197ae1cc926fccfa0c4a649d",
+        "actions-utils": "Khan/actions-utils#v1.0.0",
+        "actions-workflow-tools": "Khan/actions-workflow-tools#v1.0.1",
         "babel-eslint": "^10.1.0",
         "chalk": "^2.4.2",
         "cli-highlight": "^2.1.4",
