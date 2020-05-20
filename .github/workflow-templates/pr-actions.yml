@@ -44,7 +44,7 @@ jobs:
 #          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
 
-      - uses: Khan/flow-coverage-action@9cc8679c3d58cb9cd7c4669c041b2db1919b9509
+      - uses: Khan/flow-coverage-action@master
         setup: yarn
         with:
           flow-bin: ./node_modules/.bin/flow

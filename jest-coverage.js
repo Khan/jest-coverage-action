@@ -91,6 +91,7 @@ const lintProject = coverageData => {
         });
         /* end flow-uncovered-block */
 
+        // TODO: Figure out why so much is now not covered by flow and fix
         /* flow-uncovered-block */
         // Uncalled functions in their entirety are uncovered
         Object.keys(data.fnMap).forEach(key => {
@@ -106,6 +107,7 @@ const lintProject = coverageData => {
         const {ranges: ignoredRanges, errors} = getIgnoredRanges(file, contents);
         messages.push(...errors);
 
+        /* flow-uncovered-block */
         const ignoredLines = {};
         ignoredRanges.forEach(range => {
             if (typeof range === 'number') {
@@ -117,11 +119,12 @@ const lintProject = coverageData => {
                 }
             }
         });
+        /* end flow-uncovered-block */
 
         const uncoveredBlocks = [];
         let currentBlock = null;
         for (let line = 1; line <= lastLine; line++) {
-            if (lineStatuses[line] === false && ignoredLines[line] !== true) {
+            if (lineStatuses[line] === false && ignoredLines[line] !== true) { // flow-uncovered-line
                 if (currentBlock === null) {
                     currentBlock = [line, line];
                 } else {
@@ -139,6 +142,7 @@ const lintProject = coverageData => {
             uncoveredBlocks.push(currentBlock);
         }
 
+        /* flow-uncovered-block */
         uncoveredBlocks.forEach(([start, end]) => {
             const singleLine = start === end;
             const message = `${
@@ -148,10 +152,11 @@ const lintProject = coverageData => {
                     ? 'use // jest-uncovered-line or // jest-next-uncovered-line'
                     : 'surround with /* jest-uncovered-block */ and /* end jest-uncovered-block */'
             }`;
+            /* end flow-uncovered-block */
             messages.push({
                 message,
-                start: {line: start, column: 0},
-                end: {line: end, column: 0},
+                start: {line: start, column: 0}, // flow-uncovered-line
+                end: {line: end, column: 0}, // flow-uncovered-line
                 annotationLevel: 'failure',
                 path: file,
             });
