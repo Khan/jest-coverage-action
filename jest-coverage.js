@@ -124,7 +124,8 @@ const lintProject = coverageData => {
         const uncoveredBlocks = [];
         let currentBlock = null;
         for (let line = 1; line <= lastLine; line++) {
-            if (lineStatuses[line] === false && ignoredLines[line] !== true) { // flow-uncovered-line
+            if (lineStatuses[line] === false && ignoredLines[line] !== true) {
+                // flow-uncovered-line
                 if (currentBlock === null) {
                     currentBlock = [line, line];
                 } else {
