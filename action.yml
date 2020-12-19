@@ -10,6 +10,9 @@ inputs:
   coverage-data-path:
     required: true
     description: 'Path to your coverage file, probably ./coverage/coverage-final.json'
+  check-run-subtitle:
+    required: false
+    description: 'A subtitle to add to the check run when annotations are passed back to avoid overwriting each other'
 branding:
   icon: check-circle
   color: red
