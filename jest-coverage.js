@@ -168,6 +168,8 @@ const lintProject = coverageData => {
 
 async function run() {
     const jestBin = process.env['INPUT_JEST-BIN'];
+    const subtitle = process.env['INPUT_CHECK-RUN-SUBTITLE'];
+
     if (!jestBin) {
         console.error(
             `You need to have jest installed, and pass in the the jest binary via the variable 'jest-bin'.`,
@@ -188,7 +190,7 @@ async function run() {
     // $FlowFixMe: its ok folks
     const coverageData = require(path.resolve(coverageDataPath)); // flow-uncovered-line
     const messages = lintProject(coverageData); // flow-uncovered-line
-    await sendReport('Jest Coverage', messages);
+    await sendReport(`Jest Coverage${subtitle ? '- ' + subtitle : ''}`, messages);
 }
 
 // flow-next-uncovered-line
