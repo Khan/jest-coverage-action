@@ -190,7 +190,7 @@ async function run() {
     // $FlowFixMe: its ok folks
     const coverageData = require(path.resolve(coverageDataPath)); // flow-uncovered-line
     const messages = lintProject(coverageData); // flow-uncovered-line
-    await sendReport(`Jest Coverage${subtitle ? '- ' + subtitle : ''}`, messages);
+    await sendReport(`Jest Coverage${subtitle ? ' - ' + subtitle : ''}`, messages);
 }
 
 // flow-next-uncovered-line
