@@ -168,6 +168,7 @@ const lintProject = coverageData => {
 
 async function run() {
     const jestBin = process.env['INPUT_JEST-BIN'];
+    const workingDirectory = process.env['INPUT_CUSTOM-WORKING-DIRECTORY'];
     const subtitle = process.env['INPUT_CHECK-RUN-SUBTITLE'];
 
     if (!jestBin) {
@@ -185,7 +186,10 @@ async function run() {
         process.exit(1);
         return;
     }
-    await execProm(`${jestBin}  --silent --coverage`);
+    await execProm(`${jestBin}  --silent --coverage`, {
+        rejectOnError: false,
+        cwd: workingDirectory || '.',
+    });
 
     // $FlowFixMe: its ok folks
     const coverageData = require(path.resolve(coverageDataPath)); // flow-uncovered-line
